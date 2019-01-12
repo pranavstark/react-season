@@ -1,23 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//functional component
-// const App = () => {
-//     return (
-//         <div>
-//             <p>Hi There!</p>
-//         </div>
-//     )
-// }
 
-//class based component
 class App extends React.Component {
-    constructor(props){
-        super(props);
 
-        this.state  = {lat: null, errorMessage: ''};
-}
-
+    state  = {lat: null, errorMessage: ''};
 
     componentDidMount(){
         window.navigator.geolocation.getCurrentPosition(
@@ -25,6 +12,7 @@ class App extends React.Component {
             err => this.setState({errorMessage: err.message})
         );
     }
+
 
 
     render(){
