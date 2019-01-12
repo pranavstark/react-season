@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay';
-
+import Spinner from './Spinner'
 
 class App extends React.Component {
 
@@ -14,9 +14,7 @@ class App extends React.Component {
         );
     }
 
-
-
-    render(){
+    renderContent(){
         if(this.state.errorMessage && !this.state.lat){
             return <div>Error: {this.state.errorMessage}</div>
         }
@@ -25,7 +23,16 @@ class App extends React.Component {
             return <SeasonDisplay lat={this.state.lat}/>
         }
 
-        return <div> Loading! </div>
+        return <div><Spinner message="Please accept location request"/></div>
+    }
+
+    //this is done to show how we can render conditional components, with a single return rather than return multiple times.
+    render(){
+        return(
+            <div className="border red">
+                {this.renderContent()}
+            </div>
+        );
         
     }
 }
